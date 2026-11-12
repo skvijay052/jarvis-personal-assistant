@@ -6,7 +6,7 @@ on:
       - "agent/**"
       - ".github/workflows/wappy-agent.yml"
   push:
-    branches: [main]
+    branches: [main, feat/wappy-gemini-agent]
     paths:
       - "agent/**"
       - ".github/workflows/wappy-agent.yml"
