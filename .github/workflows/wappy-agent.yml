@@ -1,0 +1,25 @@
+name: Wappy agent typecheck
+
+on:
+  pull_request:
+    paths:
+      - "agent/**"
+      - ".github/workflows/wappy-agent.yml"
+  push:
+    branches: [main, feat/wappy-gemini-agent]
+    paths:
+      - "agent/**"
+      - ".github/workflows/wappy-agent.yml"
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+        working-directory: agent
+      - run: npm run typecheck
+        working-directory: agent

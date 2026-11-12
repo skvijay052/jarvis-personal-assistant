@@ -1,0 +1,4 @@
+.env
+.wappy/
+node_modules/
+dist/
