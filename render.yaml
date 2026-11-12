@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: jarvis-wappy-agent
+    runtime: node
+    plan: starter
+    rootDir: agent
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: GOOGLE_GENERATIVE_AI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: WHATSAPP_VERIFY_TOKEN
+        sync: false
+      - key: WHATSAPP_APP_SECRET
+        sync: false
+      - key: WHATSAPP_ALLOWED_NUMBERS
+        sync: false
+      - key: WHATSAPP_GRAPH_API_VERSION
+        value: v23.0
+      - key: MEMORY_DB_URL
+        value: file:/var/data/memory.db
+      - key: SESSION_PROFILE_DB_URL
+        value: file:/var/data/session-profile.db
+      - key: KNOWLEDGE_DB_URL
+        value: file:/var/data/knowledge.db
+    disk:
+      name: jarvis-wappy-data
+      mountPath: /var/data
+      sizeGB: 1
